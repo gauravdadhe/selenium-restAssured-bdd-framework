@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>candidatex</groupId>
+  <artifactId>qa-task</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>qa-task</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <application.domainname>qa-task.backbasecloud.com</application.domainname>
+    <browserName>chromedriver</browserName>
+    <driver.binaries.path>${project.build.directory}/generated-sources/selenium_standalone_binaries
+    </driver.binaries.path>
+    <operatingSystem>windows</operatingSystem>
+    <browserBit>googlechrome/64bit</browserBit>
+    <cucumber.tag>@regression</cucumber.tag>
+    <browser.ExplicitDriverWait>5</browser.ExplicitDriverWait>
+    <cucumber.feature>src/test/java/candidatex/features</cucumber.feature>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+    </dependency>
+
+    <!-- Cucumber libraries used in the framework -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>4.2.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>4.2.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>4.2.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>4.4.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.12.3</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+    <dependency>
+      <groupId>com.googlecode.json-simple</groupId>
+      <artifactId>json-simple</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.mashape.unirest</groupId>
+      <artifactId>unirest-java</artifactId>
+      <version>1.4.9</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>4.9.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>2.5.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+
+    <!-- Selenium libraries -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-api</artifactId>
+      <version>3.141.59</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-support</artifactId>
+      <version>3.141.59</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-chrome-driver</artifactId>
+      <version>3.141.59</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-firefox-driver</artifactId>
+      <version>3.141.59</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.lazerycode.selenium</groupId>
+      <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+      <version>1.0.17</version>
+      <type>maven-plugin</type>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
+      </plugin>
+
+      <!-- Download binaries for the browsers -->
+      <plugin>
+        <groupId>com.lazerycode.selenium</groupId>
+        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+        <version>1.0.17</version>
+        <configuration>
+          <onlyGetDriversForHostOperatingSystem>true</onlyGetDriversForHostOperatingSystem>
+          <operatingSystems>
+            <windows>true</windows>
+            <linux>false</linux>
+            <mac>false</mac>
+          </operatingSystems>
+          <rootStandaloneServerDirectory>
+            ${project.build.directory}/generated-sources/selenium_standalone_binaries
+          </rootStandaloneServerDirectory>
+          <downloadedZipFileDirectory>
+            ${project.build.directory}/generated-sources/selenium_standalone_zips
+          </downloadedZipFileDirectory>
+          <customRepositoryMap>${project.basedir}/src/test/resources/browserVersions.xml
+          </customRepositoryMap>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <goals>
+              <goal>selenium</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!--Write runtime variables to the property file -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>write-project-properties</goal>
+            </goals>
+            <configuration>
+              <outputFile>
+                src/test/resources/test.properties
+              </outputFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <!-- Regression Execution profile -->
+      <id>regression</id>
+      <build>
+        <plugins>
+
+          <!--Generation of runners and features -->
+          <plugin>
+            <groupId>com.github.temyers</groupId>
+            <artifactId>cucumber-jvm-parallel-plugin</artifactId>
+            <version>5.0.0</version>
+            <executions>
+              <execution>
+                <id>generateRunners</id>
+                <phase>generate-test-sources</phase>
+                <goals>
+                  <goal>generateRunners</goal>
+                </goals>
+                <configuration>
+                  <!-- Mandatory -->
+                  <!-- List of package names to scan for glue code. -->
+                  <glue>
+                    <package>candidatex/stepDefinitions</package>
+                  </glue>
+                  <featuresDirectory>${cucumber.feature}</featuresDirectory>
+                  <cucumberOutputDir>${project.build.directory}/cucumber-report</cucumberOutputDir>
+                  <outputDirectory>${project.build.directory}/generated-test-sources/cucumber
+                  </outputDirectory>
+                  <tags>
+                    <tag>not @manual</tag>
+                    <tag>not @ignore</tag>
+                    <tag>${cucumber.tag}</tag>
+                  </tags>
+                  <parallelScheme>FEATURE</parallelScheme>
+                  <!-- Specify a custom template for the generated sources (this is a path relative to the project base directory) -->
+                  <customVmTemplate>src/test/resources/cucumber-custom-runner.vm</customVmTemplate>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!--Run the generated tests with Maven failsafe -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <skipTests>true</skipTests>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>Run parallel tests</id>
+                <phase>integration-test</phase>
+                <goals>
+                  <goal>integration-test</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <testFailureIgnore>true</testFailureIgnore>
+              <forkCount>1</forkCount>
+              <reuseForks>false</reuseForks>
+              <argLine>-Dfile.encoding=UTF-8</argLine>
+              <disableXmlReport>true</disableXmlReport>
+            </configuration>
+          </plugin>
+          <!--Format Json report-->
+          <plugin>
+            <groupId>com.trivago.rta</groupId>
+            <artifactId>cluecumber-report-plugin</artifactId>
+            <version>2.7.0</version>
+            <executions>
+              <execution>
+                <id>report</id>
+                <phase>post-integration-test</phase>
+                <goals>
+                  <goal>reporting</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <sourceJsonReportDirectory>${project.build.directory}\cucumber-report
+              </sourceJsonReportDirectory>
+              <generatedHtmlReportDirectory>${project.build.directory}\aggregatedResults
+              </generatedHtmlReportDirectory>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

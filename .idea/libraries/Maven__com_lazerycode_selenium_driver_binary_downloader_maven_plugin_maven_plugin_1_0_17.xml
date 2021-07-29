@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.lazerycode.selenium:driver-binary-downloader-maven-plugin:maven-plugin:1.0.17">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/lazerycode/selenium/driver-binary-downloader-maven-plugin/1.0.17/driver-binary-downloader-maven-plugin-1.0.17.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/lazerycode/selenium/driver-binary-downloader-maven-plugin/1.0.17/driver-binary-downloader-maven-plugin-1.0.17-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/lazerycode/selenium/driver-binary-downloader-maven-plugin/1.0.17/driver-binary-downloader-maven-plugin-1.0.17-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

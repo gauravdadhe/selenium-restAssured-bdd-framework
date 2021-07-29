@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven-3.6.1'
+        jdk 'openJDK_11'
+    }
+    stages {
+        stage('Git pull'){
+            steps{
+				script{
+						git branch: 'main', credentialsId: '<ADD-CREDENTIALS-HERE>', url: 'git@github.com:******.git'
+					}
+				}
+        }
+        stage ('ExecuteTests') {
+            steps {
+            sh '''
+                  mvn clean install
+                  mvn verify -Pregression
+                '''
+            }
+        }
+    }
+}
