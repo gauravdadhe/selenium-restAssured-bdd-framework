@@ -12,7 +12,7 @@ QA-Task Backbase Automation project
 The tests can be run locally using below command in terminal
 ```java
 mvn clean install
-mvn verify -Pregression"
+mvn verify -Pregression
 ```
 
 The reports of the execution are available at,
