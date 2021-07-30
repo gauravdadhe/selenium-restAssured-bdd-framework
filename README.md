@@ -27,3 +27,8 @@ There are 3 stages available in this file.
 * ExecuteTests --> *To execute the tests*
 
 Note: This is a draft feature.
+
+## Framework Design in Nutshell.
+
+![image](https://user-images.githubusercontent.com/23377173/127639877-81cb72e6-a4f2-44a0-9f45-939497ada156.png)
+
