@@ -18,6 +18,7 @@ mvn verify -Pregression
 The reports of the execution are available at,
 * html --> Available at *target/aggregatedResults/index.html*
 
+![image](https://user-images.githubusercontent.com/23377173/127638269-89ca257f-0a4b-4eae-9b09-6290c69216f2.png)
 
 ## How to run the test in a CI/CD pipeline
 _jenkins.pipeline_ file is available in the project. This file can be used for executing the tests using Jenkins.
