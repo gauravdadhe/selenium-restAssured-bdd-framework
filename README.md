@@ -1,5 +1,5 @@
-# QaTask
-QA-Task Backbase Automation project
+# Automation project
+Selenium + Rest Assured + BDD framework
 
 ## Technical stack used.
   1. Required scripting language: Java 
