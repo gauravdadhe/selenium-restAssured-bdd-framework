@@ -1,4 +1,4 @@
-# Automation project
+# Test Automation project
 Selenium + Rest Assured + BDD framework
 
 ## Technical stack used.
